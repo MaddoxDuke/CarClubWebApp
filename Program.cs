@@ -1,11 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using RunGroopWebApp.Data;
 using RunGroupWebApp.Data;
+using RunGroupWebApp.Interfaces;
+using RunGroupWebApp.Models;
+using RunGroupWebApp.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Adds the interfaces into the program.
+builder.Services.AddScoped<IClubRepository, ClubRepository>();
+builder.Services.AddScoped<IRaceRepository, RaceRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options => //adds the Database into the application
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -13,9 +19,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => //adds the Databa
 
 var app = builder.Build();
 
-if (args.Length == 1 && args[0].ToLower() == "seeddata") //allows a command to seed data.
+if (args.Length == 1 && args[0].ToLower() == "seeddata") //Seeds data if there is no data in the Db
 {
-    Seed.SeedData(app); 
+    Seed.SeedData(app); //allows a command to seed data.
 }
 
 // Configure the HTTP request pipeline.

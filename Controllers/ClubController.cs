@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RunGroupWebApp.Data;
+using RunGroupWebApp.Interfaces;
 using RunGroupWebApp.Models;
 
 namespace RunGroupWebApp.Controllers
@@ -8,20 +9,36 @@ namespace RunGroupWebApp.Controllers
     public class ClubController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public ClubController(ApplicationDbContext context)
+        private readonly IClubRepository _clubRepository;
+        public ClubController(ApplicationDbContext context, IClubRepository clubRepository)
         {
-            _context = context; // when yo use context think of Db. Brings tables from Db into program.
+            // when you use context think of Db. Brings tables from Db into program.
+            _clubRepository = clubRepository;
         }
         // MVC description
-        public IActionResult Index() //C
+        public async Task<IActionResult> Index() //C
         {
-            var clubs = _context.Clubs.ToList(); //M: Db to clubs and builsd query/db and brings back.
+            IEnumerable<Club> clubs = await _clubRepository.GetAll(); //M: Db to clubs and builsd query/db and brings back.
             return View(clubs); //V
         }
-        public IActionResult Detail(int id) //Detail pages do not return lists of Club. Just one
+        public async Task<IActionResult> Detail(int id) //Detail pages do not return lists of Club. Just one
         {
-            Club club = _context.Clubs.Include(a => a.Address).FirstOrDefault(c => c.Id == id);
+            Club club = await _clubRepository.GetByIdAsync(id);
             return View(club);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Club club) 
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(club);
+            }
+            _clubRepository.Add(club);
+            return RedirectToAction("Index");
         }
     }
 }

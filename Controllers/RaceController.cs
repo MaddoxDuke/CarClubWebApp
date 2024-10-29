@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RunGroupWebApp.Data;
+using RunGroupWebApp.Interfaces;
 using RunGroupWebApp.Models;
 
 namespace RunGroupWebApp.Controllers
@@ -8,19 +8,21 @@ namespace RunGroupWebApp.Controllers
     public class RaceController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public RaceController(ApplicationDbContext context)
+        private readonly IRaceRepository _raceRepository;
+        public RaceController(ApplicationDbContext context, IRaceRepository raceRepository)
         {
-            _context = context; // when yo usee context think of Db. Brings tables from Db into program.
+            // when you use context think of Db. Brings tables from Db into program.
+            _raceRepository = raceRepository;
         }
         // MVC description
-        public IActionResult Index() //C
+        public async Task<IActionResult> Index() //C
         {
-            var races = _context.Races.ToList(); //M: Db to clubs and builsd query/db and brings back.
+            IEnumerable<Race> races = await _raceRepository.GetAll(); //M: Db to clubs and builsd query/db and brings back.
             return View(races); //V
         }
-        public IActionResult Detail(int id) //Detail pages do not return lists of Club. Just one
+        public async Task<IActionResult> Detail(int id) //Detail pages do not return lists of Club. Just one
         {
-            Race race = _context.Races.Include(a => a.Address).FirstOrDefault(c => c.Id == id);
+            Race race = await _raceRepository.GetByIdAsync(id);
             return View(race);
         }
     }
