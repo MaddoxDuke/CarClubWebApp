@@ -2,6 +2,9 @@
 using RunGroupWebApp.Data;
 using RunGroupWebApp.Interfaces;
 using RunGroupWebApp.Models;
+using RunGroupWebApp.Repository;
+using RunGroupWebApp.Services;
+using RunGroupWebApp.ViewModels;
 
 namespace RunGroupWebApp.Controllers
 {
@@ -9,10 +12,12 @@ namespace RunGroupWebApp.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IRaceRepository _raceRepository;
-        public RaceController(ApplicationDbContext context, IRaceRepository raceRepository)
+        private readonly IPhotoService _photoService;
+        public RaceController(ApplicationDbContext context, IRaceRepository raceRepository, IPhotoService photoService)
         {
             // when you use context think of Db. Brings tables from Db into program.
             _raceRepository = raceRepository;
+            _photoService = photoService;
         }
         // MVC description
         public async Task<IActionResult> Index() //C
@@ -31,14 +36,33 @@ namespace RunGroupWebApp.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Race race)
+        public async Task<IActionResult> Create(CreateRaceViewModel raceVM)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(race);
+                var result = await _photoService.AddPhotoAsync(raceVM.Image);
+
+                var race = new Race
+                {
+                    Title = raceVM.Title,
+                    Description = raceVM.Description,
+                    Image = result.Url.ToString(),
+                    Address = new Address
+                    {
+                        Street = raceVM.Address.Street,
+                        City = raceVM.Address.City,
+                        State = raceVM.Address.State
+                    }
+                };
+
+                _raceRepository.Add(race);
+                return RedirectToAction("Index");
             }
-            _raceRepository.Add(race);
-            return RedirectToAction("Index");
+            else
+            {
+                ModelState.AddModelError("", "Photo upload failed");
+            }
+            return View(raceVM);
         }
     }
 }

@@ -44,8 +44,15 @@ namespace RunGroupWebApp.Controllers
                 {
                     Title = clubVM.Title,
                     Description = clubVM.Description,
-                    Image = result.Url.ToString()
+                    Image = result.Url.ToString(),
+                    Address = new Address
+                    {
+                        Street = clubVM.Address.Street,
+                        City = clubVM.Address.City,
+                        State = clubVM.Address.State
+                    }
                 };
+
                 _clubRepository.Add(club);
                 return RedirectToAction("Index");
             }

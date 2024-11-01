@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "CHZtHTxGjaZ0GIKb2lbhgI2JCFKaxEc6fYtMcRP31MhNpLWG0/58+87pSY1/efMtjgCVqaXCN+FgRN8Q1MW4aw==",
+  "dgSpecHash": "UrqIXlXacXweM2DR0Jss2fRvEivjDoBRjJMB3Jm/DYB6EYKL2W1GoEFWyRrLR6jPXJmYPul9DBQbZFkeiSXsdA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\RunGroupWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\cloudinarydotnet\\1.26.2\\cloudinarydotnet.1.26.2.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\dotenv.net\\3.2.1\\dotenv.net.3.2.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
