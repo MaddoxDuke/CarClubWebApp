@@ -36,6 +36,11 @@ namespace RunGroupWebApp.Repository
             //returns an individual id, NOT a list. Is not generating a full page, just the details.
             return await _context.Clubs.Include(i => i.Address).FirstOrDefaultAsync(i => i.Id == id);
         }
+        public async Task<Club> GetByIdAsyncNoTracking(int id)
+        {
+            //returns an individual id, NOT a list. Is not generating a full page, just the details.
+            return await _context.Clubs.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
+        }
 
         public async Task<IEnumerable<Club>> GetClubByCity(string city)
         {
