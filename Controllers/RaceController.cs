@@ -16,6 +16,7 @@ namespace RunGroupWebApp.Controllers
             // when you use context think of Db. Brings tables from Db into program.
             _raceRepository = raceRepository;
             _photoService = photoService;
+            _context = context;
         }
         // MVC description
         public async Task<IActionResult> Index() //C

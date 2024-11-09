@@ -17,6 +17,7 @@ namespace RunGroupWebApp.Controllers
             // when you use context think of Db. Brings tables from Db into program.
             _clubRepository = clubRepository;
             _photoService = photoService;
+            _context = context; 
         }
         // MVC description
         public async Task<IActionResult> Index() //C
@@ -109,6 +110,12 @@ namespace RunGroupWebApp.Controllers
                     return View(clubVM);
                 }
                 var photoResult = await _photoService.AddPhotoAsync(clubVM.Image);
+
+                if (photoResult == null || photoResult.Url == null)
+                {
+                    ModelState.AddModelError("Image", "Photo upload failed.");
+                    return View(clubVM);
+                }
 
                 var club = new Club
                 {
