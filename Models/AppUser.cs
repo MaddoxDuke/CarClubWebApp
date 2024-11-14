@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace RunGroupWebApp.Models
+namespace CarClubWebApp.Models
 {
     public class AppUser
     {
@@ -11,7 +11,7 @@ namespace RunGroupWebApp.Models
         public int? Mileage { get; set; }
         public Address? Address { get; set; }
         public ICollection<Club> Clubs { get; set; }
-        public ICollection<Race> Races { get; set; }
+        public ICollection<Event> Races { get; set; }
         
     }
 }

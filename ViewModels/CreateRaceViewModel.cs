@@ -1,7 +1,7 @@
-﻿using RunGroupWebApp.Data.Enum;
-using RunGroupWebApp.Models;
+﻿using CarClubWebApp.Data.Enum;
+using CarClubWebApp.Models;
 
-namespace RunGroupWebApp.ViewModels
+namespace CarClubWebApp.ViewModels
 {
     public class CreateRaceViewModel
     {

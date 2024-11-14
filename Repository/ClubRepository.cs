@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RunGroupWebApp.Data;
-using RunGroupWebApp.Interfaces;
-using RunGroupWebApp.Models;
+using CarClubWebApp.Data;
+using CarClubWebApp.Interfaces;
+using CarClubWebApp.Models;
 
-namespace RunGroupWebApp.Repository
+namespace CarClubWebApp.Repository
 {
     public class ClubRepository : IClubRepository
     {

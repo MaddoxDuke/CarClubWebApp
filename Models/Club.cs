@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using RunGroupWebApp.Data.Enum;
+using CarClubWebApp.Data.Enum;
 
-namespace RunGroupWebApp.Models
+namespace CarClubWebApp.Models
 {
     public class Club
     {

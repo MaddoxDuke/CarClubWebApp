@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RunGroupWebApp.Models
+namespace CarClubWebApp.Models
 {
     public class Address //Notice the model is similar to the database table.
     {

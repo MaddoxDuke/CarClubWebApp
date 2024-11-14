@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RunGroupWebApp.Data;
-using RunGroupWebApp.Interfaces;
-using RunGroupWebApp.Models;
-using RunGroupWebApp.ViewModels;
+using CarClubWebApp.Data;
+using CarClubWebApp.Interfaces;
+using CarClubWebApp.Models;
+using CarClubWebApp.ViewModels;
 
-namespace RunGroupWebApp.Controllers
+namespace CarClubWebApp.Controllers
 {
     public class ClubController : Controller
     {
@@ -116,13 +116,14 @@ namespace RunGroupWebApp.Controllers
                     ModelState.AddModelError("Image", "Photo upload failed.");
                     return View(clubVM);
                 }
+              
 
                 var club = new Club
                 {
                     Id = id,
                     Title = clubVM.Title,
                     Description = clubVM.Description,
-                    Image = photoResult.Url.ToString(),
+                    Image = photoResult.Url.ToString(), // This is return null sometimes
                     AddressId = clubVM.AddressId,
                     Address = clubVM.Address
                 };

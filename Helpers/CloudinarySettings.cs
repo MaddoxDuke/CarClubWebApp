@@ -1,4 +1,4 @@
-﻿namespace RunGroupWebApp.Helpers
+﻿namespace CarClubWebApp.Helpers
 {
     public class CloudinarySettings
     {

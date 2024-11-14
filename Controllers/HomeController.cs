@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using RunGroupWebApp.Models;
+using CarClubWebApp.Models;
 
-namespace RunGroupWebApp.Controllers
+namespace CarClubWebApp.Controllers
 {
     public class HomeController : Controller
     {

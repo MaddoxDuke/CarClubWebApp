@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using RunGroopWebApp.Data;
-using RunGroupWebApp.Data;
-using RunGroupWebApp.Helpers;
-using RunGroupWebApp.Interfaces;
-using RunGroupWebApp.Repository;
-using RunGroupWebApp.Services;
+using CarClubWebApp.Data;
+using CarClubWebApp.Helpers;
+using CarClubWebApp.Interfaces;
+using CarClubWebApp.Repository;
+using CarClubWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

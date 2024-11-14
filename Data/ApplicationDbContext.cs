@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RunGroupWebApp.Models;
+using CarClubWebApp.Models;
 
-namespace RunGroupWebApp.Data
+namespace CarClubWebApp.Data
 {
     public class ApplicationDbContext : DbContext // gives functionality for app. Db stands for Database. hence this is where you will store the stored info
     {
@@ -10,7 +10,7 @@ namespace RunGroupWebApp.Data
             
         }
         //Db tables
-        public DbSet<Race> Races { get; set; } // customary for the secondary term to be plural
+        public DbSet<Event> Races { get; set; } // customary for the secondary term to be plural
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Address> Addresses { get; set; }
 

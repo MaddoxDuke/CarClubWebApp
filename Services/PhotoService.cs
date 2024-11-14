@@ -1,10 +1,10 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.Extensions.Options;
-using RunGroupWebApp.Helpers;
-using RunGroupWebApp.Interfaces;
+using CarClubWebApp.Helpers;
+using CarClubWebApp.Interfaces;
 
-namespace RunGroupWebApp.Services
+namespace CarClubWebApp.Services
 {
     public class PhotoService : IPhotoService
     {

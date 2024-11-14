@@ -1,7 +1,7 @@
-﻿using RunGroupWebApp.Models;
+﻿using CarClubWebApp.Models;
 // Repositories can also be called...
 
-namespace RunGroupWebApp.Interfaces
+namespace CarClubWebApp.Interfaces
 {
     public interface IClubRepository
     {

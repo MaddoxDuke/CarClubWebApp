@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RunGroupWebApp.Data;
-using RunGroupWebApp.Interfaces;
-using RunGroupWebApp.Models;
+using CarClubWebApp.Data;
+using CarClubWebApp.Interfaces;
+using CarClubWebApp.Models;
 
-namespace RunGroupWebApp.Repository
+namespace CarClubWebApp.Repository
 {
     public class RaceRepository : IRaceRepository
     {
@@ -12,33 +12,33 @@ namespace RunGroupWebApp.Repository
         {
             _context = context;
         }
-        public bool Add(Race race)
+        public bool Add(Event race)
         {
             _context.Add(race);
             return Save();
         }
 
-        public bool Delete(Race race)
+        public bool Delete(Event race)
         {
             _context.Remove(race);
             return Save();
         }
 
-        public async Task<IEnumerable<Race>> GetAll()
+        public async Task<IEnumerable<Event>> GetAll()
         {
             return await _context.Races.ToListAsync();
         }
 
-        public async Task<IEnumerable<Race>> GetAllRacesByCity(string city)
+        public async Task<IEnumerable<Event>> GetAllRacesByCity(string city)
         {
             return await _context.Races.Where(c => c.Address.City.Contains(city)).ToListAsync();
         }
 
-        public async Task<Race> GetByIdAsync(int id)
+        public async Task<Event> GetByIdAsync(int id)
         {
             return await _context.Races.Include(i => i.Address).FirstOrDefaultAsync(i => i.Id == id);
         }
-        public async Task<Race> GetByIdAsyncNoTracking(int id)
+        public async Task<Event> GetByIdAsyncNoTracking(int id)
         {
             return await _context.Races.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
         }
@@ -49,7 +49,7 @@ namespace RunGroupWebApp.Repository
             return saved > 0;
         }
 
-        public bool Update(Race race)
+        public bool Update(Event race)
         {
             _context.Update(race);
             return Save();

@@ -1,18 +1,18 @@
-﻿using RunGroupWebApp.Models;
+﻿using CarClubWebApp.Models;
 
-namespace RunGroupWebApp.Interfaces
+namespace CarClubWebApp.Interfaces
 {
     public interface IRaceRepository
     {
-        Task<IEnumerable<Race>> GetAll();
-        Task<Race> GetByIdAsync(int id);
-        Task<Race> GetByIdAsyncNoTracking(int id);
+        Task<IEnumerable<Event>> GetAll();
+        Task<Event> GetByIdAsync(int id);
+        Task<Event> GetByIdAsyncNoTracking(int id);
 
-        Task<IEnumerable<Race>> GetAllRacesByCity(string city);
+        Task<IEnumerable<Event>> GetAllRacesByCity(string city);
         //Will always have the Add, update, delete, and saves here. Design structure
-        bool Add(Race race);
-        bool Update(Race race);
-        bool Delete(Race race);
+        bool Add(Event race);
+        bool Update(Event race);
+        bool Delete(Event race);
         bool Save();
     }
 }

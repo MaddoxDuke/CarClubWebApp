@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace RunGroupWebApp.Migrations
+namespace CarClubWebApp.Migrations
 {
     public partial class InitialCreate : Migration
     {

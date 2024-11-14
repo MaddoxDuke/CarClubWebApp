@@ -1,33 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RunGroupWebApp.Data;
-using RunGroupWebApp.Interfaces;
-using RunGroupWebApp.Models;
-using RunGroupWebApp.ViewModels;
+using CarClubWebApp.Data;
+using CarClubWebApp.Interfaces;
+using CarClubWebApp.Models;
+using CarClubWebApp.ViewModels;
 
-namespace RunGroupWebApp.Controllers
+namespace CarClubWebApp.Controllers
 {
     public class RaceController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IRaceRepository _raceRepository;
+        private readonly IRaceRepository _eventRepository;
         private readonly IPhotoService _photoService;
-        public RaceController(ApplicationDbContext context, IRaceRepository raceRepository, IPhotoService photoService)
+        public RaceController(ApplicationDbContext context, IRaceRepository eventRepository, IPhotoService photoService)
         {
             // when you use context think of Db. Brings tables from Db into program.
-            _raceRepository = raceRepository;
+            _eventRepository = eventRepository;
             _photoService = photoService;
             _context = context;
         }
         // MVC description
         public async Task<IActionResult> Index() //C
         {
-            IEnumerable<Race> races = await _raceRepository.GetAll(); //M: Db to races and builsd query/db and brings back.
-            return View(races); //V
+            IEnumerable<Event> carEvent = await _eventRepository.GetAll(); //M: Db to events and builsd query/db and brings back.
+            return View(carEvent); //V
         }
-        public async Task<IActionResult> Detail(int id) //Detail pages do not return lists of race. Just one
+        public async Task<IActionResult> Detail(int id) //Detail pages do not return lists of event. Just one
         {
-            Race race = await _raceRepository.GetByIdAsync(id);
-            return View(race);
+            Event carEvent = await _eventRepository.GetByIdAsync(id);
+            return View(carEvent);
         }
         //NEED This for url to show...
         public IActionResult Create()
@@ -35,96 +35,101 @@ namespace RunGroupWebApp.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CreateRaceViewModel raceVM)
+        public async Task<IActionResult> Create(CreateRaceViewModel carEventVM)
         {
             if (ModelState.IsValid)
             {
-                var result = await _photoService.AddPhotoAsync(raceVM.Image);
+                var result = await _photoService.AddPhotoAsync(carEventVM.Image);
 
-                var race = new Race
+                var carEvent = new Event
                 {
-                    Title = raceVM.Title,
-                    Description = raceVM.Description,
+                    Title = carEventVM.Title,
+                    Description = carEventVM.Description,
                     Image = result.Url.ToString(),
                     Address = new Address
                     {
-                        Street = raceVM.Address.Street,
-                        City = raceVM.Address.City,
-                        State = raceVM.Address.State
+                        Street = carEventVM.Address.Street,
+                        City = carEventVM.Address.City,
+                        State = carEventVM.Address.State
                     }
                 };
 
-                _raceRepository.Add(race);
+                _eventRepository.Add(carEvent);
                 return RedirectToAction("Index");
             }
             else
             {
                 ModelState.AddModelError("", "Photo upload failed");
             }
-            return View(raceVM);
+            return View(carEventVM);
         }
         public async Task<IActionResult> Edit(int id)
         {
-            var race = await _raceRepository.GetByIdAsync(id);
+            var carEvent = await _eventRepository.GetByIdAsync(id);
 
-            if (race == null) return View("Error");
+            if (carEvent == null) return View("Error");
 
-            var raceVM = new EditRaceViewModel
+            var carEventVM = new EditRaceViewModel
             {
-                Title = race.Title,
-                Description = race.Description,
-                AddressId = race.AddressId,
-                Address = race.Address,
-                URL = race.Image,
-                RaceCategory = race.RaceCategory
+                Title = carEvent.Title,
+                Description = carEvent.Description,
+                AddressId = carEvent.AddressId,
+                Address = carEvent.Address,
+                URL = carEvent.Image,
+                RaceCategory = carEvent.RaceCategory
             };
 
-            return View(raceVM);
+            return View(carEventVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, EditRaceViewModel raceVM)
+        public async Task<IActionResult> Edit(int id, EditRaceViewModel carEventVM)
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Failed to edit race");
-                return View("Edit", raceVM);
+                ModelState.AddModelError("", "Failed to edit event");
+                return View("Edit", carEventVM);
             }
             else
             {
 
             }
 
-            var userRace = await _raceRepository.GetByIdAsyncNoTracking(id);
+            var userEvent = await _eventRepository.GetByIdAsyncNoTracking(id);
 
-            if (userRace != null)
+            if (userEvent != null)
             {
                 try
                 {
-                    await _photoService.DeletePhotoAsync(userRace.Image);
+                    await _photoService.DeletePhotoAsync(userEvent.Image);
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", "Could not delete photo");
-                    return View(raceVM);
+                    return View(carEventVM);
                 }
-                var photoResult = await _photoService.AddPhotoAsync(raceVM.Image);
-
-                var race = new Race
+                var photoResult = await _photoService.AddPhotoAsync(carEventVM.Image);
+                
+                if (photoResult == null || photoResult.Url == null)
+                {
+                    ModelState.AddModelError("Image", "Photo upload failed.");
+                    return View(carEventVM);
+                }
+                var carEvent = new Event
                 {
                     Id = id,
-                    Title = raceVM.Title,
-                    Description = raceVM.Description,
+                    Title = carEventVM.Title,
+                    Description = carEventVM.Description,
                     Image = photoResult.Url.ToString(),
-                    AddressId = raceVM.AddressId,
-                    Address = raceVM.Address
+                    AddressId = carEventVM.AddressId,
+                    Address = carEventVM.Address
                 };
-                _raceRepository.Update(race);
+                _eventRepository.Update(carEvent);
 
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(raceVM);
+                return View(carEventVM);
             }
         }
     }

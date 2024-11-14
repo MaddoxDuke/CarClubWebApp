@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RunGroupWebApp.Data;
+using CarClubWebApp.Data;
 
 #nullable disable
 
-namespace RunGroupWebApp.Migrations
+namespace CarClubWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20241024151506_InitialCreate")]
@@ -24,7 +24,7 @@ namespace RunGroupWebApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("RunGroupWebApp.Models.Address", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace RunGroupWebApp.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("RunGroupWebApp.Models.AppUser", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -70,7 +70,7 @@ namespace RunGroupWebApp.Migrations
                     b.ToTable("AppUser");
                 });
 
-            modelBuilder.Entity("RunGroupWebApp.Models.Club", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.Club", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +108,7 @@ namespace RunGroupWebApp.Migrations
                     b.ToTable("Clubs");
                 });
 
-            modelBuilder.Entity("RunGroupWebApp.Models.Race", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,24 +146,24 @@ namespace RunGroupWebApp.Migrations
                     b.ToTable("Races");
                 });
 
-            modelBuilder.Entity("RunGroupWebApp.Models.AppUser", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.AppUser", b =>
                 {
-                    b.HasOne("RunGroupWebApp.Models.Address", "Address")
+                    b.HasOne("CarClubWebApp.Models.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId");
 
                     b.Navigation("Address");
                 });
 
-            modelBuilder.Entity("RunGroupWebApp.Models.Club", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.Club", b =>
                 {
-                    b.HasOne("RunGroupWebApp.Models.Address", "Address")
+                    b.HasOne("CarClubWebApp.Models.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RunGroupWebApp.Models.AppUser", "AppUser")
+                    b.HasOne("CarClubWebApp.Models.AppUser", "AppUser")
                         .WithMany("Clubs")
                         .HasForeignKey("AppUserId");
 
@@ -172,15 +172,15 @@ namespace RunGroupWebApp.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("RunGroupWebApp.Models.Race", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.Event", b =>
                 {
-                    b.HasOne("RunGroupWebApp.Models.Address", "Address")
+                    b.HasOne("CarClubWebApp.Models.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RunGroupWebApp.Models.AppUser", "AppUser")
+                    b.HasOne("CarClubWebApp.Models.AppUser", "AppUser")
                         .WithMany("Races")
                         .HasForeignKey("AppUserId");
 
@@ -189,7 +189,7 @@ namespace RunGroupWebApp.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("RunGroupWebApp.Models.AppUser", b =>
+            modelBuilder.Entity("CarClubWebApp.Models.AppUser", b =>
                 {
                     b.Navigation("Clubs");
 

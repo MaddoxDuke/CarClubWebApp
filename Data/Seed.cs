@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 //using RunGroopWebApp.Data.Enum;
 //using RunGroopWebApp.Models;
-using RunGroupWebApp.Data.Enum;
-using RunGroupWebApp.Data;
-using RunGroupWebApp.Models;
+using CarClubWebApp.Data.Enum;
+using CarClubWebApp.Data;
+using CarClubWebApp.Models;
 
 namespace RunGroopWebApp.Data
 {
@@ -79,11 +79,11 @@ namespace RunGroopWebApp.Data
                 //Races
                 if (!context.Races.Any())
                 {
-                    context.Races.AddRange(new List<Race>()
+                    context.Races.AddRange(new List<Event>()
                     {
-                        new Race()
+                        new Event()
                         {
-                            Title = "Running Race 1",
+                            Title = "Running Event 1",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first race",
                             RaceCategory = RaceCategory.Marathon,
@@ -94,9 +94,9 @@ namespace RunGroopWebApp.Data
                                 State = "NC"
                             }
                         },
-                        new Race()
+                        new Event()
                         {
-                            Title = "Running Race 2",
+                            Title = "Running Event 2",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first race",
                             RaceCategory = RaceCategory.Ultra,
