@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RunGroopWebApp.Data;
+using CarGroopWebData.Data;
 using CarClubWebApp.Data;
 using CarClubWebApp.Helpers;
 using CarClubWebApp.Interfaces;
@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //Adds the interfaces into the program.
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
-builder.Services.AddScoped<IRaceRepository, RaceRepository>(); 
+builder.Services.AddScoped<IEventRepository, EventRepository>(); 
 builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings")); // adds the photo Db
 builder.Services.AddDbContext<ApplicationDbContext>(options => //adds the Database into the application

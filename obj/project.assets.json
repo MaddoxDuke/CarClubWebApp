@@ -4961,9 +4961,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\RunGroupWebApp.csproj",
-      "projectName": "RunGroupWebApp",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\RunGroupWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\CarClubWebApp.csproj",
+      "projectName": "CarClubWebApp",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\CarClubWebApp.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\RunGroupWebApp.bundle.scp.css",
-      "PackagePath": "staticwebassets\\RunGroupWebApp.bundle.scp.css"
+      "Id": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CarClubWebApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CarClubWebApp.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Administrator\\Desktop\\Code\\RunApp\\RunGroupWebApp\\wwwroot\\css\\site.css",
@@ -245,20 +245,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.RunGroupWebApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.CarClubWebApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.RunGroupWebApp.props",
-      "PackagePath": "build\\RunGroupWebApp.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.CarClubWebApp.props",
+      "PackagePath": "build\\CarClubWebApp.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.RunGroupWebApp.props",
-      "PackagePath": "buildMultiTargeting\\RunGroupWebApp.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.CarClubWebApp.props",
+      "PackagePath": "buildMultiTargeting\\CarClubWebApp.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.RunGroupWebApp.props",
-      "PackagePath": "buildTransitive\\RunGroupWebApp.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.CarClubWebApp.props",
+      "PackagePath": "buildTransitive\\CarClubWebApp.props"
     }
   ],
   "ElementsToRemove": []

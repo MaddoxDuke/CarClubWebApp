@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-//using RunGroopWebApp.Data.Enum;
-//using RunGroopWebApp.Models;
-using CarClubWebApp.Data.Enum;
+﻿using CarClubWebApp.Data.Enum;
 using CarClubWebApp.Data;
 using CarClubWebApp.Models;
 
-namespace RunGroopWebApp.Data
+namespace CarGroopWebData.Data
 {
     public class Seed
     {
@@ -29,7 +26,6 @@ namespace RunGroopWebApp.Data
                             ClubCategory = ClubCategory.City,
                             Address = new Address()
                             {
-                                Street = "123 Main St",
                                 City = "Charlotte",
                                 State = "NC"
                             }
@@ -42,7 +38,6 @@ namespace RunGroopWebApp.Data
                             ClubCategory = ClubCategory.Endurance,
                             Address = new Address()
                             {
-                                Street = "123 Main St",
                                 City = "Charlotte",
                                 State = "NC"
                             }
@@ -55,7 +50,6 @@ namespace RunGroopWebApp.Data
                             ClubCategory = ClubCategory.Trail,
                             Address = new Address()
                             {
-                                Street = "123 Main St",
                                 City = "Charlotte",
                                 State = "NC"
                             }
@@ -68,7 +62,6 @@ namespace RunGroopWebApp.Data
                             ClubCategory = ClubCategory.City,
                             Address = new Address()
                             {
-                                Street = "123 Main St",
                                 City = "Michigan",
                                 State = "NC"
                             }
@@ -76,34 +69,32 @@ namespace RunGroopWebApp.Data
                     });
                     context.SaveChanges();
                 }
-                //Races
-                if (!context.Races.Any())
+                //Events
+                if (!context.carEvents.Any())
                 {
-                    context.Races.AddRange(new List<Event>()
+                    context.carEvents.AddRange(new List<CarEvent>()
                     {
-                        new Event()
+                        new CarEvent()
                         {
-                            Title = "Running Event 1",
+                            Title = "Event 1",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                            Description = "This is the description of the first race",
-                            RaceCategory = RaceCategory.Marathon,
+                            Description = "This is the description of the first event",
+                            EventCategory = EventCategory.Drift,
                             Address = new Address()
                             {
-                                Street = "123 Main St",
                                 City = "Charlotte",
                                 State = "NC"
                             }
                         },
-                        new Event()
+                        new CarEvent()
                         {
-                            Title = "Running Event 2",
+                            Title = "Event 2",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
-                            Description = "This is the description of the first race",
-                            RaceCategory = RaceCategory.Ultra,
+                            Description = "This is the description of the first event",
+                            EventCategory = EventCategory.Autocross,
                             AddressId = 5,
                             Address = new Address()
                             {
-                                Street = "123 Main St",
                                 City = "Charlotte",
                                 State = "NC"
                             }

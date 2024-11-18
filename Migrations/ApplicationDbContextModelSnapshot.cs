@@ -128,7 +128,7 @@ namespace CarClubWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RaceCategory")
+                    b.Property<int>("EventCategory")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -141,7 +141,7 @@ namespace CarClubWebApp.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Races");
+                    b.ToTable("carEvents");
                 });
 
             modelBuilder.Entity("CarClubWebApp.Models.AppUser", b =>
@@ -179,7 +179,7 @@ namespace CarClubWebApp.Migrations
                         .IsRequired();
 
                     b.HasOne("CarClubWebApp.Models.AppUser", "AppUser")
-                        .WithMany("Races")
+                        .WithMany("carEvents")
                         .HasForeignKey("AppUserId");
 
                     b.Navigation("Address");
@@ -191,7 +191,7 @@ namespace CarClubWebApp.Migrations
                 {
                     b.Navigation("Clubs");
 
-                    b.Navigation("Races");
+                    b.Navigation("carEvents");
                 });
 #pragma warning restore 612, 618
         }

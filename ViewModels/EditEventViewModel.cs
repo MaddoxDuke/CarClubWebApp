@@ -3,7 +3,7 @@ using CarClubWebApp.Models;
 
 namespace CarClubWebApp.ViewModels
 {
-    public class EditRaceViewModel
+    public class EditEventViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -12,7 +12,7 @@ namespace CarClubWebApp.ViewModels
         public int AddressId { get; set; }
         public Address Address { get; set; }
         public string? URL { get; set; }
-        public RaceCategory RaceCategory { get; set; }
+        public EventCategory EventCategory { get; set; }
 
     }
 }

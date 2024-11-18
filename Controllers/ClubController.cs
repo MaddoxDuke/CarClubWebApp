@@ -48,7 +48,6 @@ namespace CarClubWebApp.Controllers
                     Image = result.Url.ToString(),
                     Address = new Address
                     {
-                        Street = clubVM.Address.Street,
                         City = clubVM.Address.City,
                         State = clubVM.Address.State
                     }

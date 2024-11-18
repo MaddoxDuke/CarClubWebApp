@@ -10,7 +10,7 @@ namespace CarClubWebApp.Data
             
         }
         //Db tables
-        public DbSet<Event> Races { get; set; } // customary for the secondary term to be plural
+        public DbSet<CarEvent> carEvents { get; set; } // customary for the secondary term to be plural
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Address> Addresses { get; set; }
 

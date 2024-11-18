@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarClubWebApp.Models
 {
-    public class Event
+    public class CarEvent
     {
         [Key]
         public int Id { get; set; }
@@ -14,7 +14,7 @@ namespace CarClubWebApp.Models
         [ForeignKey("Address")]
         public int AddressId { get; set; }
         public Address? Address { get; set; }
-        public RaceCategory RaceCategory { get; set; }
+        public EventCategory EventCategory { get; set; }
         [ForeignKey("AppUser")]
         public string? AppUserId { get; set; }
         public AppUser? AppUser { get; set; }

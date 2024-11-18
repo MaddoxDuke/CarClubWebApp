@@ -11,7 +11,7 @@ namespace CarClubWebApp.Models
         public int? Mileage { get; set; }
         public Address? Address { get; set; }
         public ICollection<Club> Clubs { get; set; }
-        public ICollection<Event> Races { get; set; }
+        public ICollection<CarEvent> carEvents { get; set; }
         
     }
 }
